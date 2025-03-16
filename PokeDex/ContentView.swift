@@ -39,7 +39,9 @@ struct ContentView: View {
             .navigationTitle("ポケモン図鑑") // 画面のタイトルを設定
             .onAppear {
                 // 画面表示時にポケモンデータを取得
-                pokeAPI.fetchPokemon()
+                if pokeAPI.pokemonList.isEmpty { // すでにデータがあるなら再取得しない
+                    pokeAPI.fetchPokemon()
+                }
             }
         }
     }
